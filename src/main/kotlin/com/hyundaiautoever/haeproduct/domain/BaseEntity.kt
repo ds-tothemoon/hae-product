@@ -1,11 +1,8 @@
 package com.hyundaiautoever.haeproduct.domain
 
 import jakarta.persistence.EntityListeners
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
 import jakarta.persistence.MappedSuperclass
 import org.springframework.data.annotation.CreatedBy
-import org.springframework.data.annotation.Id
 import org.springframework.data.annotation.LastModifiedBy
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime

@@ -9,5 +9,4 @@ class HaeProductApplicationTests {
     @Test
     fun contextLoads() {
     }
-
 }

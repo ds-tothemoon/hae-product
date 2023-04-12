@@ -9,7 +9,7 @@ data class Product(
     val id: Long,
     var productName: String,
     @Convert(converter = BooleanToYNConverter::class)
-    var isActive:Boolean = false
+    var isActive: Boolean = false
 ) : BaseEntity() {
     fun update(product: Product) {
         productName = product.productName

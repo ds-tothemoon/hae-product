@@ -4,6 +4,7 @@ plugins {
     id("org.springframework.boot") version "3.0.5"
     id("io.spring.dependency-management") version "1.1.0"
     id("org.graalvm.buildtools.native") version "0.9.20"
+    id("org.jlleitschuh.gradle.ktlint") version "10.0.0"
     kotlin("jvm") version "1.7.22"
     kotlin("plugin.spring") version "1.7.22"
     kotlin("plugin.jpa") version "1.7.22"
@@ -48,6 +49,19 @@ dependencyManagement {
     imports {
         mavenBom("de.codecentric:spring-boot-admin-dependencies:${property("springBootAdminVersion")}")
     }
+}
+
+configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+    verbose.set(true)
+    disabledRules.set(
+        setOf(
+            "import-ordering",
+            "no-wildcard-imports",
+            "final-newline",
+            "insert_final_newline",
+            "max_line_length"
+        )
+    )
 }
 
 tasks.withType<KotlinCompile> {
