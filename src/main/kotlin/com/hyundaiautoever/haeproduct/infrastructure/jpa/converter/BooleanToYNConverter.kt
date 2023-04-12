@@ -3,7 +3,7 @@ package com.hyundaiautoever.haeproduct.infrastructure.jpa.converter
 import jakarta.persistence.AttributeConverter
 import jakarta.persistence.Converter
 
-@Converter
+@Converter(autoApply = true)
 class BooleanToYNConverter : AttributeConverter<Boolean, String> {
 
     override fun convertToDatabaseColumn(attribute: Boolean?): String {

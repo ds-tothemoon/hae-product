@@ -1,4 +1,4 @@
-package com.hyundaiautoever.haeproduct.facade.outer
+package com.hyundaiautoever.haeproduct.presentation.outer
 
 import com.hyundaiautoever.haeproduct.application.ProductService
 import org.springframework.http.ResponseEntity
@@ -11,6 +11,7 @@ class ProductController(val productService: ProductService) {
     @GetMapping("{id}")
     fun getProduct(@PathVariable id: Long): ResponseEntity<String> {
         val product = productService.getProduct(id)
+        print(product.auditLog)
         return ResponseEntity
             .ok()
             .body(product.toString())
