@@ -2,6 +2,7 @@ package com.hyundaiautoever.haeproduct.presentation.outer
 
 import com.hyundaiautoever.haeproduct.application.InnerProductService
 import com.hyundaiautoever.haeproduct.application.ProductService
+import com.hyundaiautoever.haeproduct.domain.Product
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -19,6 +20,11 @@ class ProductController(
         return ResponseEntity
             .ok()
             .body(product.toString())
+    }
+
+    @GetMapping("search")
+    fun searchProduct(@RequestParam keyword: String): List<Product> {
+        return productService.searchProduct(keyword)
     }
 
     @PostMapping("register")

@@ -2,13 +2,15 @@ package com.hyundaiautoever.haeproduct.application
 
 import com.hyundaiautoever.haeproduct.domain.Product
 import com.hyundaiautoever.haeproduct.domain.ProductRepository
+import com.hyundaiautoever.haeproduct.domain.ProductRepositoryCustom
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.lang.RuntimeException
 
 @Service
 class ProductService(
-    val productRepository: ProductRepository
+    val productRepository: ProductRepository,
+    val productRepositoryCustom: ProductRepositoryCustom
 ) {
 
     fun getProduct(id: Long): Product {
@@ -29,5 +31,9 @@ class ProductService(
         productForUpdate.update(product)
 
         return productForUpdate.id
+    }
+
+    fun searchProduct(keyword: String): List<Product> {
+        return productRepositoryCustom.searchProducts(keyword)
     }
 }
