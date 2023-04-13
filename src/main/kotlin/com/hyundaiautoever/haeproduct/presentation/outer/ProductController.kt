@@ -1,12 +1,16 @@
 package com.hyundaiautoever.haeproduct.presentation.outer
 
+import com.hyundaiautoever.haeproduct.application.InnerProductService
 import com.hyundaiautoever.haeproduct.application.ProductService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("product")
-class ProductController(val productService: ProductService) {
+class ProductController(
+    val productService: ProductService,
+    val innerProductService: InnerProductService
+) {
 
     @GetMapping("{id}")
     fun getProduct(@PathVariable id: Long): ResponseEntity<String> {
@@ -30,4 +34,7 @@ class ProductController(val productService: ProductService) {
         productDto.id = id
         return productService.updateProduct(productDto.toEntity())
     }
+
+    @GetMapping("inner")
+    fun test() = innerProductService.hello()
 }
