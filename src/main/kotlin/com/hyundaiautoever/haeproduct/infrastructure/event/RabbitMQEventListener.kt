@@ -1,5 +1,6 @@
 package com.hyundaiautoever.haeproduct.infrastructure.event
 
+import com.fasterxml.jackson.databind.JsonMappingException
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.hyundaiautoever.haeproduct.application.HistoryService
 import com.hyundaiautoever.haeproduct.config.event.Event
@@ -19,24 +20,19 @@ class RabbitMQEventListener(
     override fun listen(message: Message?) {
         val event = runCatching {
             objectMapper.readValue(message?.body, Event::class.java)
+        }.getOrElse {
+            throw RuntimeException("failed to parse message", it)
         }
 
-        event.onSuccess {
-            when (it.eventType) {
-                EventType.HISTORY -> {
-                    val entity = convertEntity(it)
-                    entity?.let {
-                        historyService.save(entity)
-                    }
-                }
+        when (event.eventType) {
+            EventType.HISTORY -> {
+                convertEntity(event)?.let { historyService.save(it) }
             }
         }
     }
 
-    private fun convertEntity(event: Event): Any? {
-        if ("productHistory" == event.eventTitle) {
-            return objectMapper.convertValue(event.eventContent, ProductHistory::class.java)
-        }
-        return null
+    private fun convertEntity(event: Event): Any? = when (event.eventTitle) {
+        "productHistory" -> objectMapper.convertValue(event.eventContent, ProductHistory::class.java)
+        else -> null
     }
 }
