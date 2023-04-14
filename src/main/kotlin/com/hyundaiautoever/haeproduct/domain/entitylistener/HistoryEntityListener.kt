@@ -8,7 +8,6 @@ import com.hyundaiautoever.haeproduct.domain.Product
 import com.hyundaiautoever.haeproduct.domain.ProductHistory
 import jakarta.persistence.PostPersist
 import jakarta.persistence.PostUpdate
-import jakarta.persistence.PreUpdate
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 
