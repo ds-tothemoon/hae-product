@@ -1,6 +1,5 @@
 package com.hyundaiautoever.haeproduct.infrastructure.event
 
-import com.fasterxml.jackson.databind.JsonMappingException
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.hyundaiautoever.haeproduct.application.HistoryService
 import com.hyundaiautoever.haeproduct.config.event.Event
