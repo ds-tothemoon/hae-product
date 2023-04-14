@@ -1,4 +1,4 @@
-package com.hyundaiautoever.haeproduct.config
+package com.hyundaiautoever.haeproduct.config.jpa
 
 import com.querydsl.jpa.impl.JPAQueryFactory
 import jakarta.persistence.EntityManager
