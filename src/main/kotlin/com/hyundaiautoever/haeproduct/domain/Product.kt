@@ -1,11 +1,12 @@
 package com.hyundaiautoever.haeproduct.domain
 
+import com.hyundaiautoever.haeproduct.domain.entitylistener.HistoryEntityListener
 import com.hyundaiautoever.haeproduct.domain.vo.AuditLog
 import com.hyundaiautoever.haeproduct.domain.vo.Money
 import jakarta.persistence.*
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 
-@EntityListeners(AuditingEntityListener::class)
+@EntityListeners(AuditingEntityListener::class, HistoryEntityListener::class)
 @Entity
 class Product(
     id: Long,

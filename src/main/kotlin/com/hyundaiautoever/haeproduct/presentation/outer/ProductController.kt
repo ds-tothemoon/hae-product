@@ -2,6 +2,7 @@ package com.hyundaiautoever.haeproduct.presentation.outer
 
 import com.hyundaiautoever.haeproduct.application.InnerProductService
 import com.hyundaiautoever.haeproduct.application.ProductService
+import com.hyundaiautoever.haeproduct.config.event.EventPublisher
 import com.hyundaiautoever.haeproduct.domain.Product
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -10,7 +11,8 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("product")
 class ProductController(
     val productService: ProductService,
-    val innerProductService: InnerProductService
+    val innerProductService: InnerProductService,
+    val eventPublisher: EventPublisher
 ) {
 
     @GetMapping("{id}")
@@ -43,4 +45,9 @@ class ProductController(
 
     @GetMapping("inner")
     fun test() = innerProductService.hello()
+
+    @PostMapping("event/publish")
+    fun publishEvent(@RequestBody event: String) {
+        eventPublisher.publish(event)
+    }
 }

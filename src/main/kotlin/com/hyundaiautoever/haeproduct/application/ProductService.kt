@@ -1,6 +1,7 @@
 package com.hyundaiautoever.haeproduct.application
 
 import com.hyundaiautoever.haeproduct.domain.Product
+import com.hyundaiautoever.haeproduct.domain.ProductHistory
 import com.hyundaiautoever.haeproduct.domain.ProductRepository
 import com.hyundaiautoever.haeproduct.domain.ProductRepositoryCustom
 import org.springframework.stereotype.Service
@@ -35,5 +36,9 @@ class ProductService(
 
     fun searchProduct(keyword: String): List<Product> {
         return productRepositoryCustom.searchProducts(keyword)
+    }
+
+    fun registerProductHistory(productHistory: ProductHistory) {
+        println(productHistory)
     }
 }
