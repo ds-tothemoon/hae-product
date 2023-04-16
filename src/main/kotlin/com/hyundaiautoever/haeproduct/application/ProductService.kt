@@ -1,7 +1,7 @@
 package com.hyundaiautoever.haeproduct.application
 
 import com.hyundaiautoever.haeproduct.domain.Product
-import com.hyundaiautoever.haeproduct.domain.ProductHistory
+import com.hyundaiautoever.haeproduct.domain.history.ProductHistory
 import com.hyundaiautoever.haeproduct.domain.ProductRepository
 import com.hyundaiautoever.haeproduct.domain.ProductRepositoryCustom
 import org.springframework.stereotype.Service

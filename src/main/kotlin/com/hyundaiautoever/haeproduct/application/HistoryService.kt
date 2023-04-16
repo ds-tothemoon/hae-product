@@ -1,5 +1,6 @@
 package com.hyundaiautoever.haeproduct.application
 
+import com.hyundaiautoever.haeproduct.domain.history.HistoryBase
 import jakarta.persistence.EntityManager
 import jakarta.persistence.PersistenceContext
 import org.springframework.stereotype.Service
@@ -11,7 +12,7 @@ class HistoryService {
     private lateinit var entityManager: EntityManager
 
     @Transactional
-    fun save(entity: Any) {
+    fun save(entity: HistoryBase) {
         entityManager.persist(entity)
     }
 }

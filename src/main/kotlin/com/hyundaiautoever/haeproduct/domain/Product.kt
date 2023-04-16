@@ -1,6 +1,7 @@
 package com.hyundaiautoever.haeproduct.domain
 
 import com.hyundaiautoever.haeproduct.domain.entitylistener.HistoryEntityListener
+import com.hyundaiautoever.haeproduct.domain.history.Historyable
 import com.hyundaiautoever.haeproduct.domain.vo.AuditLog
 import com.hyundaiautoever.haeproduct.domain.vo.Money
 import jakarta.persistence.*
@@ -13,7 +14,7 @@ class Product(
     productName: String,
     price: Money,
     isActive: Boolean
-) {
+) : Historyable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,4 +38,6 @@ class Product(
         isActive = product.isActive
         price = product.price
     }
+
+    override fun getEntityId(): Long = id
 }

@@ -1,5 +1,6 @@
-package com.hyundaiautoever.haeproduct.domain
+package com.hyundaiautoever.haeproduct.domain.history
 
+import com.hyundaiautoever.haeproduct.domain.history.HistoryBase
 import com.hyundaiautoever.haeproduct.domain.vo.AuditLog
 import jakarta.persistence.*
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
@@ -8,14 +9,15 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener
 @Entity
 class ProductHistory(
     id: Long = 0,
-    productNo: Long,
+    entityNo: Long,
     content: String,
-) {
+) : HistoryBase(entityNo = entityNo, content = content) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = id
 
-    var productNo: Long = productNo
+    @Column(name = "productNo")
+    var entityNo: Long = entityNo
 
     var content: String = content
 

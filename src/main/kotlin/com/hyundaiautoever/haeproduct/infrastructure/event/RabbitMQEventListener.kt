@@ -5,7 +5,8 @@ import com.hyundaiautoever.haeproduct.application.HistoryService
 import com.hyundaiautoever.haeproduct.config.event.Event
 import com.hyundaiautoever.haeproduct.config.event.EventListener
 import com.hyundaiautoever.haeproduct.config.event.EventType
-import com.hyundaiautoever.haeproduct.domain.ProductHistory
+import com.hyundaiautoever.haeproduct.domain.history.HistoryBase
+import com.hyundaiautoever.haeproduct.domain.history.HistoryEnum
 import org.springframework.amqp.core.Message
 import org.springframework.amqp.rabbit.annotation.RabbitListener
 import org.springframework.stereotype.Component
@@ -30,8 +31,8 @@ class RabbitMQEventListener(
         }
     }
 
-    private fun convertEntity(event: Event): Any? = when (event.eventTitle) {
-        "productHistory" -> objectMapper.convertValue(event.eventContent, ProductHistory::class.java)
-        else -> null
+    private fun convertEntity(event: Event): HistoryBase? {
+        val historyEnum = HistoryEnum.valueOf(event.eventTitle)
+        return objectMapper.convertValue(event.eventContent, historyEnum.historyClazz.java)
     }
 }
