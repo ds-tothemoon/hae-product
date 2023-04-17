@@ -7,6 +7,8 @@ import com.hyundaiautoever.haeproduct.config.event.EventListener
 import com.hyundaiautoever.haeproduct.config.event.EventType
 import com.hyundaiautoever.haeproduct.domain.history.HistoryBase
 import com.hyundaiautoever.haeproduct.domain.history.HistoryEnum
+import com.hyundaiautoever.haeproduct.logger
+import org.springframework.amqp.AmqpRejectAndDontRequeueException
 import org.springframework.amqp.core.Message
 import org.springframework.amqp.rabbit.annotation.RabbitListener
 import org.springframework.stereotype.Component
@@ -21,7 +23,8 @@ class RabbitMQEventListener(
         val event = runCatching {
             objectMapper.readValue(message?.body, Event::class.java)
         }.getOrElse {
-            throw RuntimeException("failed to parse message", it)
+            logger().error("Error processing message")
+            throw AmqpRejectAndDontRequeueException("Error processing message")
         }
 
         when (event.eventType) {
@@ -35,6 +38,7 @@ class RabbitMQEventListener(
         val historyEnum = HistoryEnum.valueOf(event.eventTitle)
         objectMapper.convertValue(event.eventContent, historyEnum.historyClazz.java)
     } catch (ex: IllegalArgumentException) {
+        logger().error("IllegalArgumentException in ${this.javaClass}")
         null
     }
 }
