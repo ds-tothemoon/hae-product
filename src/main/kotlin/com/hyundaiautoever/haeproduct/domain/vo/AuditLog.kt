@@ -8,16 +8,16 @@ import org.springframework.data.annotation.LastModifiedDate
 import java.time.LocalDateTime
 
 @Embeddable
-class AuditLog {
+data class AuditLog(
     @CreatedDate
-    var createdAt: LocalDateTime? = null
+    var createdAt: LocalDateTime? = null,
 
     @CreatedBy
-    var createdBy: Long? = null
+    var createdBy: Long? = null,
 
     @LastModifiedDate
-    var updatedAt: LocalDateTime? = null
+    var updatedAt: LocalDateTime? = null,
 
     @LastModifiedBy
     var updatedBy: Long? = null
-}
+)
