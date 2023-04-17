@@ -1,6 +1,5 @@
 package com.hyundaiautoever.haeproduct.domain.history
 
-import com.hyundaiautoever.haeproduct.domain.history.HistoryBase
 import com.hyundaiautoever.haeproduct.domain.vo.AuditLog
 import jakarta.persistence.*
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
@@ -18,9 +17,9 @@ class ProductHistory(
 
     @Column(name = "productNo")
     var entityNo: Long = entityNo
-
+        private set
     var content: String = content
-
+        private set
     @Embedded
     var auditLog: AuditLog = AuditLog()
         private set

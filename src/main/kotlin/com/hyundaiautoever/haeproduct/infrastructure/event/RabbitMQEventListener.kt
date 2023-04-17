@@ -31,8 +31,10 @@ class RabbitMQEventListener(
         }
     }
 
-    private fun convertEntity(event: Event): HistoryBase? {
+    private fun convertEntity(event: Event): HistoryBase? = try {
         val historyEnum = HistoryEnum.valueOf(event.eventTitle)
-        return objectMapper.convertValue(event.eventContent, historyEnum.historyClazz.java)
+        objectMapper.convertValue(event.eventContent, historyEnum.historyClazz.java)
+    } catch (ex: IllegalArgumentException) {
+        null
     }
 }

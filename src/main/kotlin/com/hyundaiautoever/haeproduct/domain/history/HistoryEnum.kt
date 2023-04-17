@@ -2,6 +2,7 @@ package com.hyundaiautoever.haeproduct.domain.history
 
 import com.hyundaiautoever.haeproduct.domain.Product
 import kotlin.reflect.KClass
+import kotlin.reflect.full.primaryConstructor
 
 enum class HistoryEnum(
     val sourceClazz: KClass<out Historyable>,
@@ -11,16 +12,7 @@ enum class HistoryEnum(
 
     companion object {
         @JvmStatic
-        private val historyEnumMap = initHistoryEnumMap()
-
-        @JvmStatic
-        private fun initHistoryEnumMap(): Map<KClass<out Historyable>, HistoryEnum> {
-            val historyEnumMap = mutableMapOf<KClass<out Historyable>, HistoryEnum>()
-            HistoryEnum.values().forEach {
-                historyEnumMap[it.sourceClazz] = it
-            }
-            return historyEnumMap
-        }
+        private val historyEnumMap: Map<KClass<out Historyable>, HistoryEnum> = values().associateBy { it.sourceClazz }
 
         fun getHistoryType(classType: KClass<out Historyable>): HistoryEnum? {
             return historyEnumMap[classType]
@@ -28,6 +20,6 @@ enum class HistoryEnum(
     }
 
     fun createNewHistory(vararg args: Any?): HistoryBase {
-        return historyClazz.constructors.first().call(*args)
+        return historyClazz.primaryConstructor!!.call(*args)
     }
 }
