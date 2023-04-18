@@ -12,8 +12,10 @@ spring:
             ddl-auto: update
         properties:
             hibernate:
+                metadata_builder_contributor: com.hyundaiautoever.haeproduct.infrastructure.jpa.mariadb.ApplySQLFunction
                 show_sql: true
                 format_sql: true
+        open-in-view: false
     rabbitmq:
         host: localhost
         port: 5672

@@ -1,5 +1,6 @@
-package com.hyundaiautoever.haeproduct.domain
+package com.hyundaiautoever.haeproduct.domain.repository
 
+import com.hyundaiautoever.haeproduct.domain.Product
 import java.util.Optional
 
 interface ProductRepository {

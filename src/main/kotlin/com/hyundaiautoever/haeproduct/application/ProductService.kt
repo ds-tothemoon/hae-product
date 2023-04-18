@@ -2,8 +2,8 @@ package com.hyundaiautoever.haeproduct.application
 
 import com.hyundaiautoever.haeproduct.domain.Product
 import com.hyundaiautoever.haeproduct.domain.history.ProductHistory
-import com.hyundaiautoever.haeproduct.domain.ProductRepository
-import com.hyundaiautoever.haeproduct.domain.ProductRepositoryCustom
+import com.hyundaiautoever.haeproduct.domain.repository.ProductRepository
+import com.hyundaiautoever.haeproduct.domain.repository.ProductRepositoryCustom
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.lang.RuntimeException

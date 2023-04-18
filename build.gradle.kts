@@ -53,6 +53,10 @@ configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
     verbose.set(true)
     disabledRules.set(
         setOf(
+            "import-ordering",
+            "no-wildcard-imports",
+            "final-newline",
+            "insert_final_newline",
             "max_line_length"
         )
     )

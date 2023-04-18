@@ -1,7 +1,7 @@
 package com.hyundaiautoever.haeproduct.infrastructure.jpa.repository
 
 import com.hyundaiautoever.haeproduct.domain.Product
-import com.hyundaiautoever.haeproduct.domain.ProductRepositoryCustom
+import com.hyundaiautoever.haeproduct.domain.repository.ProductRepositoryCustom
 import com.hyundaiautoever.haeproduct.domain.QProduct
 import com.querydsl.jpa.impl.JPAQueryFactory
 import org.springframework.stereotype.Repository
