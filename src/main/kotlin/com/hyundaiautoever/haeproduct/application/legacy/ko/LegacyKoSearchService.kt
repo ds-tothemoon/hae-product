@@ -7,7 +7,6 @@ import com.hyundaiautoever.haeproduct.domain.repository.legacy.ko.IfSaleCdspCcar
 import com.hyundaiautoever.haeproduct.domain.repository.legacy.ko.IfSaleCdspCpndRelRepository
 import com.hyundaiautoever.haeproduct.domain.repository.legacy.ko.IfSaleCdspOptCpndCmpoRepositoryCustom
 import com.hyundaiautoever.haeproduct.domain.repository.legacy.ko.IfSaleCdspSaleCtyMasterRepository
-import com.hyundaiautoever.haeproduct.logger
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
@@ -28,12 +27,7 @@ class LegacyKoSearchService(
     }
 
     fun getOptionProduct(saleMdlCd: String, optionList: List<String>): IfSaleCdspSaleCtyMaster? {
-        val optionProduct = ifSaleCdspOptCpndCmpoRepositoryCustom.findOptionCombination(saleMdlCd, optionList)
-        logger().info("$optionProduct")
-        if (optionProduct == null) {
-            return null
-        }
-
-        return ifSaleCdspSaleCtyMasterRepository.findBySaleCtyNo(optionProduct.optCpndCtyNo)
+        val optionCombination = ifSaleCdspOptCpndCmpoRepositoryCustom.findOptionCombination(saleMdlCd, optionList)
+        return optionCombination?.let { ifSaleCdspSaleCtyMasterRepository.findBySaleCtyNo(it.optCpndCtyNo) }
     }
 }
