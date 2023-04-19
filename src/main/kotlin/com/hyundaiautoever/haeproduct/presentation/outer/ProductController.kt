@@ -18,7 +18,6 @@ class ProductController(
     @GetMapping("{id}")
     fun getProduct(@PathVariable id: Long): ResponseEntity<String> {
         val product = productService.getProduct(id)
-        print(product.auditLog)
         return ResponseEntity
             .ok()
             .body(product.toString())
