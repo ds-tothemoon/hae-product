@@ -18,7 +18,7 @@ class RabbitMQEventListener(
     private val objectMapper: ObjectMapper,
     private val historyService: HistoryService
 ) : EventListener {
-    @RabbitListener(queues = ["hae-queue"])
+    @RabbitListener(queues = ["hae-queue"], exclusive = true)
     override fun listen(message: Message?) {
         val event = runCatching {
             objectMapper.readValue(message?.body, Event::class.java)
