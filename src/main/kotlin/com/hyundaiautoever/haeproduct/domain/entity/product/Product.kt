@@ -1,9 +1,9 @@
-package com.hyundaiautoever.haeproduct.domain
+package com.hyundaiautoever.haeproduct.domain.entity.product
 
 import com.hyundaiautoever.haeproduct.domain.entitylistener.HistoryEntityListener
 import com.hyundaiautoever.haeproduct.domain.history.Historyable
-import com.hyundaiautoever.haeproduct.domain.vo.AuditLog
-import com.hyundaiautoever.haeproduct.domain.vo.Money
+import com.hyundaiautoever.haeproduct.domain.entity.vo.AuditLog
+import com.hyundaiautoever.haeproduct.domain.entity.vo.Money
 import jakarta.persistence.*
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 

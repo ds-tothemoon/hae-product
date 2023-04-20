@@ -1,7 +1,7 @@
 package com.hyundaiautoever.haeproduct.presentation.outer
 
-import com.hyundaiautoever.haeproduct.domain.Product
-import com.hyundaiautoever.haeproduct.domain.vo.Money
+import com.hyundaiautoever.haeproduct.domain.entity.product.Product
+import com.hyundaiautoever.haeproduct.domain.entity.vo.Money
 import java.math.BigDecimal
 
 data class ProductRegisterDto(

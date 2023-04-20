@@ -1,4 +1,4 @@
-package com.hyundaiautoever.haeproduct.domain.vo
+package com.hyundaiautoever.haeproduct.domain.entity.vo
 
 import jakarta.persistence.Column
 import jakarta.persistence.Embeddable

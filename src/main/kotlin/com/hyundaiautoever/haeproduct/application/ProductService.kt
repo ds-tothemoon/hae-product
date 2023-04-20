@@ -1,6 +1,6 @@
 package com.hyundaiautoever.haeproduct.application
 
-import com.hyundaiautoever.haeproduct.domain.Product
+import com.hyundaiautoever.haeproduct.domain.entity.product.Product
 import com.hyundaiautoever.haeproduct.domain.history.ProductHistory
 import com.hyundaiautoever.haeproduct.domain.repository.ProductRepository
 import com.hyundaiautoever.haeproduct.domain.repository.ProductRepositoryCustom

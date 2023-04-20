@@ -1,6 +1,6 @@
 package com.hyundaiautoever.haeproduct.domain.history
 
-import com.hyundaiautoever.haeproduct.domain.vo.AuditLog
+import com.hyundaiautoever.haeproduct.domain.entity.vo.AuditLog
 import jakarta.persistence.*
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 

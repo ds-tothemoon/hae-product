@@ -3,7 +3,7 @@ package com.hyundaiautoever.haeproduct.presentation.outer
 import com.hyundaiautoever.haeproduct.application.InnerProductService
 import com.hyundaiautoever.haeproduct.application.ProductService
 import com.hyundaiautoever.haeproduct.config.event.EventPublisher
-import com.hyundaiautoever.haeproduct.domain.Product
+import com.hyundaiautoever.haeproduct.domain.entity.product.Product
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 

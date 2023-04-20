@@ -1,6 +1,6 @@
 package com.hyundaiautoever.haeproduct.domain.history
 
-import com.hyundaiautoever.haeproduct.domain.Product
+import com.hyundaiautoever.haeproduct.domain.entity.product.Product
 import kotlin.reflect.KClass
 import kotlin.reflect.full.primaryConstructor
 

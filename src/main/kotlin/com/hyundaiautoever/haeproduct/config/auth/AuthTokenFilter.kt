@@ -13,7 +13,7 @@ import org.springframework.web.reactive.function.client.WebClient
 
 @Component
 @Order(Ordered.HIGHEST_PRECEDENCE)
-class AuthTokenFilter() : Filter {
+class AuthTokenFilter : Filter {
     @Value("\${hae.service.auth.url}")
     private lateinit var AUTH_URL: String
     private val AUTHORIZATION = "Authorization"
